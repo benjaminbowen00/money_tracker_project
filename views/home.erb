@@ -1,0 +1,22 @@
+<h2>Your last five transactions are:</h2>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Amount</th>
+    <th>Shop</th>
+    <th>Category</th>
+    <th>Comment</th>
+  </tr>
+
+<% @last_five.each do |trans| %>
+<tr>
+  <td><%= "#{trans.date_of_transaction}" %></td>
+  <td><%= "#{trans.amount}" %></td>
+  <td><%= "#{trans.shop.name}" %></td>
+  <td><%= "#{trans.category.name}" %></td>
+  <td><%= "#{trans.comment}" %></td>
+</tr>
+<% end %>
+
+</table>
