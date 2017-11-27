@@ -5,13 +5,18 @@
 <table>
   <tr>
     <th>Shop</th>
+    <th>Total spend</th>
+    <th>View transactions</th>
     <th>Edit shop</th>
     <th>Remove shop</th>
   </tr>
 
   <% @shops.each do |shop| %>
     <tr>
-    <td><a href="/shops/<%= shop.id %>/transactions"><%= "#{shop.name}" %></a> </td>
+    <td><%= "#{shop.name}" %></a> </td>
+    <td> <%= "#{shop.total_spend_by_shop}" %> </td>
+    <td>  <form action="/shops/<%= shop.id %>/transactions"     method="get">
+    <input type="submit" value="Transactions"></td>
     <td>  <form action="/shops/<%= shop.id %>/edit"     method="get">
     <input type="submit" value="Edit">
     </form></td>

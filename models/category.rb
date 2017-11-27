@@ -13,8 +13,14 @@ class Category
     @id = SqlRunner.run(sql, values).first['id'].to_i
   end
 
+  def update
+    sql = "UPDATE categories SET (name)=($1) WHERE id = $2"
+    values = [@name, @id]
+    SqlRunner.run(sql, values)
+  end
+
   def self.all()
-    sql = "SELECT * FROM categories"
+    sql = "SELECT * FROM categories ORDER BY LOWER(name) ASC"
     categories = SqlRunner.run(sql)
     result = categories.map {|cat| Category.new(cat)}
   end
@@ -25,5 +31,21 @@ class Category
     transactions = SqlRunner.run(sql, values)
     result = transactions.map {|transaction| Transaction.new(transaction)}
   end
+
+  def self.find(id)
+    sql = "SELECT * FROM categories where id = $1"
+    values = [id]
+    category = SqlRunner.run(sql, values).first
+    return Category.new(category)
+  end
+
+  def total_spend_by_category
+    sql = 'SELECT SUM(amount) FROM transactions WHERE category_id = $1'
+    values = [@id]
+    total = SqlRunner.run(sql, values).first['sum']
+    return total if total
+    return 0
+  end
+
 
 end

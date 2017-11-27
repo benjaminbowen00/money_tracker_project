@@ -17,13 +17,13 @@ get '/transactions' do
   @transactions = Transaction.all
   @shops = Shop.all
   @categories = Category.all
-  erb (:index)
+  erb (:'transaction_views/index')
 end
 
 get '/transactions/new' do
   @shops = Shop.all
   @categories = Category.all
-  erb (:new)
+  erb (:'transaction_views/new')
 end
 
 post '/transactions' do
@@ -36,7 +36,7 @@ get '/transactions/:id/edit' do
   @transaction = Transaction.find(params[:id])
   @shops = Shop.all
   @categories = Category.all
-  erb (:edit)
+  erb (:'transaction_views/edit')
 end
 
 put '/transactions/:id' do
@@ -45,7 +45,6 @@ put '/transactions/:id' do
 end
 
 delete '/transactions/:id' do
-  transaction = Transaction.find(params[:id])
-  transaction.delete
+  Transaction.find(params[:id]).delete
   redirect to '/'
 end

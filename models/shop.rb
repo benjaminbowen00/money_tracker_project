@@ -21,7 +21,7 @@ class Shop
   end
 
   def self.all()
-    sql = "SELECT * FROM shops"
+    sql = "SELECT * FROM shops ORDER BY LOWER(name) ASC"
     shops = SqlRunner.run(sql)
     result = shops.map {|shop| Shop.new(shop)}
   end
@@ -45,5 +45,14 @@ class Shop
     values = [@id]
     SqlRunner.run(sql, values)
   end
+
+  def total_spend_by_shop
+    sql = 'SELECT SUM(amount) FROM transactions WHERE shop_id = $1'
+    values = [@id]
+    total = SqlRunner.run(sql, values).first['sum']
+    return total if total
+    return 0
+  end
+
 
 end

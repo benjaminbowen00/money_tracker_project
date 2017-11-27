@@ -1,5 +1,14 @@
+<%if @transactions.size ==0 %>
+<p>Are you sure you want to remove the <%="#{@category.name}"%> category from the list?</p>
+<form method="post" action="/categories/<%=@category.id%>">
+  <input type="hidden" name="_method" value="delete">
+  <button>Remove</button>
+</form>
+
+<%else%>
+
 <h2>WARNING!</h2>
-<p>You have the following transactions from <%= "#{@transactions.first.shop.name}" %></p>
+<p>You have the following transactions for the <%= "#{@category.name}" %> category:</p>
 <hr>
 <table>
   <tr>
@@ -22,9 +31,11 @@
 
 </table>
 <hr>
-<p>If you delete the shop these transactions will also be removed</p>
+<p>If you delete the category these transactions will also be removed</p>
 <p>Press the button below to remove them.</p>
-<td>  <form method="post" action="/shops/<%=@shop.id%>">
+<form method="post" action="/categories/<%=@category.id%>">
   <input type="hidden" name="_method" value="delete">
   <button>Remove</button>
-</form></td>
+</form>
+
+<%end%>

@@ -10,17 +10,18 @@ require_relative('../models/wallet.rb')
 
 get '/shops' do
   @shops = Shop.all()
-  erb (:shops)
+  erb (:'shop_views/shops')
 end
 
 get '/shops/:id/transactions' do
+  @shop = Shop.find(params[:id])
   @transactions = Shop.shop_transactions(params[:id])
-  erb (:shop_transactions)
+  erb (:'shop_views/shop_transactions')
 end
 
 get '/shops/:id/edit' do
   @shop = Shop.find(params[:id])
-  erb (:shop_edit)
+  erb (:'shop_views/shop_edit')
 end
 
 put '/shops/:id' do
@@ -36,15 +37,14 @@ end
 get '/shops/:id/warning' do
   @shop = Shop.find(params[:id])
   @transactions = Shop.shop_transactions(params[:id])
-  erb (:shop_warning)
+  erb (:'shop_views/shop_warning')
 end
 
 get '/shops/new' do
-  erb (:shop_new)
+  erb (:'shop_views/shop_new')
 end
 
 post '/shops' do
-  shop = Shop.new(params)
-  shop.save
+  shop = Shop.new(params).save
   redirect to '/shops'
 end

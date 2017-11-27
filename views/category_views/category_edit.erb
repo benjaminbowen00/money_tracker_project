@@ -1,0 +1,19 @@
+<form method="post" action="/categories/<%= @category.id %>">
+  <input type="hidden" name="_method" value="put">
+
+
+
+  <div>
+    <label>Name</label>
+    <div >
+      <input
+      type="text"
+      name="name"
+      value = "<%= @category.name %>"
+      />
+    </div>
+  </div>
+
+
+  <button>Save category</button>
+  </form>

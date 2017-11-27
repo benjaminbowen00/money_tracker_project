@@ -1,0 +1,41 @@
+<%if @transactions.size ==0 %>
+<p>Are you sure you want to remove <%="#{@shop.name}"%> from the list?</p>
+<form method="post" action="/shops/<%=@shop.id%>">
+  <input type="hidden" name="_method" value="delete">
+  <button>Remove</button>
+</form>
+
+<%else%>
+
+<h2>WARNING!</h2>
+<p>You have the following transactions from <%= "#{@shop.name}" %></p>
+<hr>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Amount</th>
+    <th>Shop</th>
+    <th>Category</th>
+    <th>Comment</th>
+  </tr>
+
+<% @transactions.each do |trans| %>
+<tr>
+  <td><%= "#{trans.date_of_transaction}" %></td>
+  <td><%= "#{trans.amount}" %></td>
+  <td><%= "#{trans.shop.name}" %></td>
+  <td><%= "#{trans.category.name}" %></td>
+  <td><%= "#{trans.comment}" %></td>
+</tr>
+<% end %>
+
+</table>
+<hr>
+<p>If you delete the shop these transactions will also be removed</p>
+<p>Press the button below to remove them.</p>
+<form method="post" action="/shops/<%=@shop.id%>">
+  <input type="hidden" name="_method" value="delete">
+  <button>Remove</button>
+</form>
+
+<%end%>
