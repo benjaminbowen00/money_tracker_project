@@ -1,0 +1,22 @@
+<h3>Your transactions are:</h3>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Amount</th>
+    <th>Shop</th>
+    <th>Category</th>
+    <th>Comment</th>
+  </tr>
+
+<% @transactions.each do |trans| %>
+<tr>
+  <td><%= "#{trans.date_of_transaction}" %></td>
+  <td><%= "#{trans.amount}" %></td>
+  <td><%= "#{trans.shop.name}" %></td>
+  <td><%= "#{trans.category.name}" %></td>
+  <td><%= "#{trans.comment}" %></td>
+</tr>
+<% end %>
+
+</table>

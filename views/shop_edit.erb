@@ -1,0 +1,19 @@
+<form method="post" action="/shops/<%= @shop.id %>">
+  <input type="hidden" name="_method" value="put">
+
+
+
+  <div>
+    <label>Name</label>
+    <div >
+      <input
+      type="text"
+      name="name"
+      value = "<%= @shop.name %>"
+      />
+    </div>
+  </div>
+
+
+  <button>Save shop</button>
+  </form>

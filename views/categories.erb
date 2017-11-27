@@ -1,0 +1,6 @@
+<h2>Choose a category to find all your transactions for that shop</h2>
+<ul>
+  <% for category in @categories%>
+  <li><a href="/categories/<%= category.id %>/transactions"><%= category.name %></a> </li>
+  <% end %>
+</ul>

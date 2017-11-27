@@ -34,10 +34,10 @@ lothian.save
 gas.save
 nandos.save
 
-wallet1 = Wallet.new({"monthly_budget"=>1000, "remaining_budget"=>500})
+wallet1 = Wallet.new({"budget"=>1000, "spend"=>0})
 wallet1.save
 
-transaction1 = Transaction.new({'amount'=>10, 'date_of_transaction'=>'2017-11-23', "comment"=>'Bought some cheese', "wallet_id"=>wallet1.id, "shop_id"=>tesco.id, "category_id"=>food.id})
+transaction1 = Transaction.new({'amount'=>10, 'date_of_transaction'=>'2017-11-23', "comment"=>'Bought food for party', "wallet_id"=>wallet1.id, "shop_id"=>tesco.id, "category_id"=>food.id})
 transaction2 = Transaction.new({'amount'=>30, 'date_of_transaction'=>'2017-11-24', "comment"=>'dinner for two', "wallet_id"=>wallet1.id, "shop_id"=>nandos.id, "category_id"=>entertainment.id})
 transaction3 = Transaction.new({'amount'=>50, 'date_of_transaction'=>'2017-11-25', "comment"=>'monthly bus pass', "wallet_id"=>wallet1.id, "shop_id"=>lothian.id, "category_id"=>transport.id})
 transaction1.save

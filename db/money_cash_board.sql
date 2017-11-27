@@ -6,8 +6,8 @@ DROP TABLE IF EXISTS wallets;
 
 CREATE TABLE wallets (
   id serial4 PRIMARY KEY,
-  monthly_budget FLOAT(2),
-  remaining_budget FLOAT(2)
+  budget FLOAT(2),
+  spend FLOAT(2)
 );
 
 CREATE TABLE shops (
@@ -26,6 +26,6 @@ CREATE TABLE transactions (
   date_of_transaction DATE,
   comment VARCHAR(255),
   wallet_id int4 REFERENCES wallets(id),
-  shop_id int4 REFERENCES shops(id),
+  shop_id int4 REFERENCES shops(id) ON DELETE CASCADE,
   category_id int4 REFERENCES categories(id)
 );

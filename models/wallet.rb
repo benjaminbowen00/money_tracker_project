@@ -2,29 +2,25 @@ require_relative('../db/sql_runner.rb')
 
 class Wallet
   attr_reader :id
-  attr_accessor :monthly_budget, :remaining_budget
+  attr_accessor :budget, :spend
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
-    @monthly_budget = options['monthly_budget'].to_i
-    @remaining_budget = options['remaining_budget'].to_i
+    @budget = options['budget'].to_i
+    @spend = options['spend'].to_i
   end
 
   def save
-    sql = "INSERT INTO wallets (monthly_budget, remaining_budget) VALUES ($1, $2) RETURNING *"
-    values = [@monthly_budget, @remaining_budget]
+    sql = "INSERT INTO wallets (budget, spend) VALUES ($1, $2) RETURNING *"
+    values = [@budget, @spend]
     @id = SqlRunner.run(sql, values).first['id'].to_i
   end
 
+
   def update
-    sql = "UPDATE wallets SET (monthly_budget, remaining_budget)=($1, $2) WHERE id = $3"
-    values = [@monthly_budget, @remaining_budget, @id]
+    sql = "SELECT SUM(amount) FROM transactions"
+    @spend = SqlRunner.run(sql).first['sum']
   end
-
-  def transaction(transaction)
-    @remaining_budget -= transaction.amount.to_i
-  end
-
 
 
   def self.find(id)

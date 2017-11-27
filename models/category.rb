@@ -19,4 +19,11 @@ class Category
     result = categories.map {|cat| Category.new(cat)}
   end
 
+  def self.category_transactions(id)
+    sql = 'SELECT transactions.* FROM transactions INNER JOIN categories ON categories.id = transactions.category_id WHERE categories.id = $1'
+    values = [id]
+    transactions = SqlRunner.run(sql, values)
+    result = transactions.map {|transaction| Transaction.new(transaction)}
+  end
+
 end

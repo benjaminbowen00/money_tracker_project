@@ -5,7 +5,7 @@ class Transaction
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
-    @amount = options['amount']
+    @amount = options['amount'].to_f.round(2)
     @date_of_transaction = options['date_of_transaction']
     @comment = options['comment']
     @wallet_id = options['wallet_id']

@@ -1,0 +1,30 @@
+<h2>Choose a shop to find all your transactions for that shop</h2>
+
+
+<div >
+<table>
+  <tr>
+    <th>Shop</th>
+    <th>Edit shop</th>
+    <th>Remove shop</th>
+  </tr>
+
+  <% @shops.each do |shop| %>
+    <tr>
+    <td><a href="/shops/<%= shop.id %>/transactions"><%= "#{shop.name}" %></a> </td>
+    <td>  <form action="/shops/<%= shop.id %>/edit"     method="get">
+    <input type="submit" value="Edit">
+    </form></td>
+    <td>  <form action="/shops/<%= shop.id %>/warning"     method="get">
+    <input type="submit" value="Remove">
+    </form></td>
+
+    </tr>
+<% end %>
+</div>
+
+
+<div>
+  <p><a href=/shops/new>Add a new shop</a></p>
+
+</div>
