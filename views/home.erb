@@ -20,3 +20,8 @@
 <% end %>
 
 </table>
+
+<h2>Your budget information:</h2>
+<p>Your budget was: <%= "#{@wallet.monthly_budget}" %></p>
+<p>Your spend is: <%= "#{@wallet.monthly_budget - @wallet.remaining_budget}" %></p>
+<p>Your remaining budget is: <%= "#{@wallet.remaining_budget}" %></p>

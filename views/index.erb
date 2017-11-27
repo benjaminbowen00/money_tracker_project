@@ -1,0 +1,37 @@
+<h2>Transactions</h2>
+
+Make a new transaction:
+<a href="/transactions/new">Make a new transaction:</a>
+
+<h3>Your transactions are:</h3>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Amount</th>
+    <th>Shop</th>
+    <th>Category</th>
+    <th>Comment</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+<% @transactions.each do |trans| %>
+<tr>
+  <td><%= "#{trans.date_of_transaction}" %></td>
+  <td><%= "#{trans.amount}" %></td>
+  <td><%= "#{trans.shop.name}" %></td>
+  <td><%= "#{trans.category.name}" %></td>
+  <td><%= "#{trans.comment}" %></td>
+  <!-- <td><p><a  href="/transactions/<%= trans.id %>/edit">Edit details</a></p></td> -->
+  <td>  <form action="/transactions/<%= trans.id %>/edit"     method="get">
+  <input type="submit" value="Edit">
+  </form></td>
+  <td>  <form method="post" action="/transactions/<%=trans.id%>">
+    <input type="hidden" name="_method" value="delete">
+    <button>Delete transaction</button>
+  </form></td>
+</tr>
+<% end %>
+
+</table>

@@ -1,0 +1,69 @@
+<form method="post" action="/transactions/<%= @transaction.id %>">
+  <input type="hidden" name="_method" value="put">
+
+
+
+  <div>
+    <label>Amount</label>
+    <div >
+      <input
+      type="number"
+      name="amount"
+      placeholder="£10.00"
+      value = "<%= @transaction.amount %>"
+      />
+    </div>
+  </div>
+
+  <div>
+    <label>Date</label>
+    <div >
+      <input
+      type="date"
+      name="date_of_transaction"
+      placeholder="25/11/2017"
+      value = "<%= @transaction.date_of_transaction %>"
+      />
+    </div>
+  </div>
+
+  <div >
+    <label >Select a shop:</label>
+    <div >
+      <select name="shop_id">
+        <% @shops.each do |shop| %>
+
+        <option value= <%= shop.id  %><%= "selected" if @transaction.shop_id == shop.id %>><%= shop.name%></option>
+
+        <% end %>
+      </select>
+    </div>
+  </div>
+
+  <div >
+    <label >Select a category:</label>
+    <div >
+      <select name="category_id">
+        <% @categories.each do |category| %>
+
+        <option value= <%= category.id  %><%= "selected" if @transaction.category_id == category.id %>><%= category.name%></option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+
+
+
+  <div>
+    <label>Comment:</label>
+    <div >
+      <input
+      type="text"
+      name="comment"
+      value="<%= @transaction.comment %>"
+      />
+    </div>
+  </div>
+
+  <button>Save transaction</button>
+  </form>
