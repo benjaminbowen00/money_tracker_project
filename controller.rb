@@ -11,6 +11,7 @@ require_relative('./controllers/categories_controller.rb')
 # binding.pry
 require_relative('./controllers/shops_controller.rb')
 require_relative('./controllers/transactions_controller.rb')
+require_relative('./controllers/wallet_controller.rb')
 
 
 

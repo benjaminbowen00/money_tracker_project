@@ -27,5 +27,5 @@ CREATE TABLE transactions (
   comment VARCHAR(255),
   wallet_id int4 REFERENCES wallets(id),
   shop_id int4 REFERENCES shops(id) ON DELETE CASCADE,
-  category_id int4 REFERENCES categories(id)
+  category_id int4 REFERENCES categories(id) ON DELETE CASCADE
 );

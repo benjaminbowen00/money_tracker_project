@@ -47,5 +47,10 @@ class Category
     return 0
   end
 
+  def delete
+    sql = "DELETE FROM categories WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
 
 end

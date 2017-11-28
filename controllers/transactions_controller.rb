@@ -7,12 +7,6 @@ require_relative('../models/shop.rb')
 require_relative('../models/transaction.rb')
 require_relative('../models/wallet.rb')
 
-
-
-
-
-
-
 get '/transactions' do
   @transactions = Transaction.all
   @shops = Shop.all

@@ -28,7 +28,7 @@
 <p>Your remaining budget is: <%= "£#{remaining}" %></p>
 
 <% if remaining < 0 %>
-<p> <%= "You have spent your whole budget!"  %></p>
+<p> You have spent more than your whole budget!</p>
 <% elsif remaining < 100 %>
-<p><%= "Be careful with your spending"  %></p>
+<p>Be careful with your spending</p>
 <% end %>

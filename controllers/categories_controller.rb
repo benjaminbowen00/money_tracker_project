@@ -42,3 +42,8 @@ post '/categories' do
   category = Category.new(params).save
   redirect to '/categories'
 end
+
+delete '/categories/:id' do
+  Category.new(params).delete
+  redirect to '/categories'
+end

@@ -30,5 +30,4 @@ class Wallet
     return Wallet.new(wallet)
   end
 
-
 end

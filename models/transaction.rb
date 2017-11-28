@@ -8,9 +8,9 @@ class Transaction
     @amount = options['amount'].to_f.round(2)
     @date_of_transaction = options['date_of_transaction']
     @comment = options['comment']
-    @wallet_id = options['wallet_id']
-    @shop_id = options['shop_id']
-    @category_id = options['category_id']
+    @wallet_id = 1
+    @shop_id = options['shop_id'].to_i
+    @category_id = options['category_id'].to_i
   end
 
   def save

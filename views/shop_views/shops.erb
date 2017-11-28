@@ -1,4 +1,4 @@
-<h2>Choose a shop to find all your transactions for that shop</h2>
+<h2>Shops</h2>
 
 
 <div >
@@ -16,7 +16,7 @@
     <td><%= "#{shop.name}" %></a> </td>
     <td> <%= "#{shop.total_spend_by_shop}" %> </td>
     <td>  <form action="/shops/<%= shop.id %>/transactions"     method="get">
-    <input type="submit" value="Transactions"></td>
+    <input type="submit" value="Transactions"></form></td>
     <td>  <form action="/shops/<%= shop.id %>/edit"     method="get">
     <input type="submit" value="Edit">
     </form></td>
