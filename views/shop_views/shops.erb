@@ -15,8 +15,16 @@
     <tr>
     <td><%= "#{shop.name}" %></a> </td>
     <td> <%= "#{shop.total_spend_by_shop}" %> </td>
-    <td>  <form action="/shops/<%= shop.id %>/transactions"     method="get">
-    <input type="submit" value="Transactions"></form></td>
+
+    <td>
+        <% if shop.total_spend_by_shop==0 %>
+        <%= "N/A" %>
+        <% else %>
+    <form action="/shops/<%= shop.id %>/transactions"     method="get">
+    <input type="submit" value="Transactions"></form>
+      <% end %>
+    </td>
+
     <td>  <form action="/shops/<%= shop.id %>/edit"     method="get">
     <input type="submit" value="Edit">
     </form></td>

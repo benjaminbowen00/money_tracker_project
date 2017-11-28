@@ -12,7 +12,7 @@
 <% @last_five.each do |trans| %>
 <tr>
   <td><%= "#{trans.date_of_transaction}" %></td>
-  <td><%= "#{trans.amount}" %></td>
+  <td><%= "#{sprintf('%.2f',trans.amount)}" %></td>
   <td><%= "#{trans.shop.name}" %></td>
   <td><%= "#{trans.category.name}" %></td>
   <td><%= "#{trans.comment}" %></td>
@@ -24,8 +24,9 @@
 <h2>Your budget information:</h2>
 <p>Your budget was: <%= "£#{@wallet.budget}" %></p>
 <p>Your spend is: <%= "£#{@wallet.spend}" %></p>
-<%remaining = @wallet.budget.to_i - @wallet.spend.to_i  %>
-<p>Your remaining budget is: <%= "£#{remaining}" %></p>
+
+<% remaining = @wallet.budget.to_f - @wallet.spend.to_f  %>
+<p>Your remaining budget is: <%= "£#{sprintf('%.2f',remaining)}" %></p>
 
 <% if remaining < 0 %>
 <p> You have spent more than your whole budget!</p>

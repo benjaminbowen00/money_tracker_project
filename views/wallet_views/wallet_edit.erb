@@ -1,0 +1,22 @@
+<h2>Your budget information:</h2>
+<p>Your budget was: <%= "£#{@wallet.budget}" %></p>
+
+
+<p>Use this page to change the budget that you have:</p>
+<form method="post" action="/wallets">
+  <input type="hidden" name="_method" value="put">
+
+  <div>
+    <label>Budget</label>
+    <div >
+      <input
+      type="number"
+      name="budget"
+      value = "<%= @wallet.budget %>"
+      />
+    </div>
+  </div>
+
+
+  <button>Save new budget</button>
+  </form>

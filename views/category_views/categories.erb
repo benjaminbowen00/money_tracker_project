@@ -16,9 +16,17 @@
     <tr>
     <td><%= "#{category.name}" %> </td>
     <td> <%= "#{category.total_spend_by_category}" %> </td>
-    <td>  <form action="/categories/<%= category.id %>/transactions"     method="get">
-    <input type="submit" value="Transactions">
-    </form></td>
+
+    <td>
+      <% if category.total_spend_by_category==0 %>
+      <%= "N/A" %>
+      <% else %>
+      <form action="/categories/<%= category.id %>/transactions"     method="get">
+      <input type="submit" value="Transactions">
+      </form>
+      </td>
+      <% end %>
+
     <td>  <form action="/categories/<%= category.id %>/edit"     method="get">
     <input type="submit" value="Edit">
     </form></td>

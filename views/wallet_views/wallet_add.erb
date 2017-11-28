@@ -1,0 +1,27 @@
+<h2>Your budget information:</h2>
+<p>Your budget was: <%= "£#{@wallet.budget}" %></p>
+
+
+<p>Use this page to change to add or subtract from your budget:</p>
+<form method="post" action="/wallets/add">
+  <input type="hidden" name="_method" value="put">
+
+  <div>
+  <input type="radio" name="add_sub" value="add" required> Add<br>
+  <input type="radio" name="add_sub" value="subtract"> Subtract<br>
+  </div>
+
+  <div>
+    <label>amount</label>
+    <div >
+      <input
+      type="number"
+      name="amount"
+      placeholder = "£100"
+      />
+    </div>
+  </div>
+
+
+  <button>Save new budget</button>
+  </form>

@@ -1,6 +1,4 @@
-<%if @transactions.size == 0 %>
-<%= "You haven't got any transactions for the #{@category.name} category." %>
-<% else %>
+
 
 <h3>Your transactions for <%= "#{@category.name}"%> are:</h3>
 
@@ -24,4 +22,3 @@
 <% end %>
 
 </table>
-<% end %>
