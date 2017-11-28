@@ -1,0 +1,17 @@
+<h2>View your transactions by month</h2>
+<table>
+  <tr>
+    <th>Month</th>
+    <th>Year</th>
+    <th>View transactions</th>
+  </tr>
+  <% @months_array.each do |month| %>
+  <tr>
+    <td><%= Date::MONTHNAMES[month.month] %></td>
+    <td><%= month.year %></td>
+    <td><a href="/months/<%= month.year %>/<%= month.month %>/transactions">link</a></td>
+  </tr>
+  <% end %>
+
+
+</table>

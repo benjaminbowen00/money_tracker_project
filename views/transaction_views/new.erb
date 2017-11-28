@@ -30,6 +30,7 @@
     <label >Select a shop:</label>
     <div >
       <select name="shop_id">
+        <option value="" disabled selected>Select your option</option>
         <% @shops.each do |shop| %>
 
         <option value= <%= shop.id  %>><%= shop.name%></option>
@@ -42,6 +43,7 @@
     <label >Select a category:</label>
     <div >
       <select name="category_id">
+        <option value="" disabled selected>Select your option</option>
         <% @categories.each do |category| %>
 
         <option value= <%= category.id  %>><%= category.name%></option>

@@ -26,13 +26,13 @@ class Transaction
   end
 
   def self.all()
-    sql = "SELECT * FROM transactions"
+    sql = "SELECT * FROM transactions ORDER BY date_of_transaction DESC"
     transactions = SqlRunner.run(sql)
     result = transactions.map {|transaction| Transaction.new(transaction)}
   end
 
   def self.last_five()
-    sql = "SELECT * FROM transactions ORDER BY date_of_transaction DESC LIMIT 5;"
+    sql = "SELECT * FROM transactions ORDER BY date_of_transaction DESC LIMIT 5"
     transactions = SqlRunner.run(sql)
     result = transactions.map {|transaction| Transaction.new(transaction)}
   end
@@ -65,4 +65,16 @@ class Transaction
     return Transaction.new(transaction)
   end
 
+  def self.transactions_by_month_number(year_id, month_id)
+    sql="SELECT * FROM transactions WHERE EXTRACT(YEAR FROM date_of_transaction)=$1 AND EXTRACT(MONTH FROM date_of_transaction)=$2"
+    values = [year_id, month_id]
+    transactions = SqlRunner.run(sql, values)
+    result = transactions.map {|transaction| Transaction.new(transaction)}
+  end
+
+  def self.total_by_month(year_id,month_id)
+  sql="SELECT SUM(amount) FROM transactions WHERE EXTRACT(YEAR FROM date_of_transaction)=$1 AND EXTRACT(MONTH FROM date_of_transaction)=$2"
+  values = [year_id, month_id]
+  SqlRunner.run(sql, values).first['sum']
+  end
 end
