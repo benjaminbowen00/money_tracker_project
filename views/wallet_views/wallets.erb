@@ -1,17 +1,23 @@
 
+<div>
+  <h2>Your budget information:</h2>
+  <p>Your budget was: <%= "£#{sprintf('%.2f', @wallet.budget)}" %></p>
+  <p>Your spend is: <%= "£#{sprintf('%.2f', @wallet.spend)}" %></p>
+
+  <% remaining = @wallet.budget.to_f - @wallet.spend.to_f  %>
+  <p>Your remaining budget is: <%= "£#{sprintf('%.2f',remaining)}" %></p>
+
+  <% if remaining < 0 %>
+  <p> You have spent more than your whole budget!</p>
+  <% elsif remaining < 100 %>
+  <p>Be careful with your spending</p>
+  <% end %>
+</div>
 
 
-<h2>Your budget information:</h2>
-<p>Your budget was: <%= "£#{@wallet.budget}" %></p>
-<p>Your spend is: <%= "£#{@wallet.spend}" %></p>
-<%remaining = @wallet.budget.to_i - @wallet.spend.to_i  %>
-<p>Your remaining budget is: <%= "£#{remaining}" %></p>
 
-<% if remaining < 0 %>
-<p> You have spent more than your whole budget!</p>
-<% elsif remaining < 100 %>
-<p>Be careful with your spending</p>
-<% end %>
+
+
 
 <hr>
 <p><a href="/wallets/edit">Change the budget<a/></p>

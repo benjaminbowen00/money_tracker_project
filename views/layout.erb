@@ -10,10 +10,9 @@
     <title>iSpend-iTrack A money tracking app</title>
   </head>
   <body>
-    <main>
+    <header>
       <h1>iSpend-iTrack</h1>
       <nav>
-
         <ul class="flex">
           <a href="/"><button class="button">Home</button></a>
 
@@ -26,6 +25,8 @@
           <a href="/wallets"><button class="button">Budget</button></a>
           <a href="/transactions/new"><button class="button trans-button">Add Transaction</button></a>
         </nav>
+      </header>
+      <main>
         <%= yield %>
       </main>
   </body>
