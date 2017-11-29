@@ -6,7 +6,6 @@
 
   <div>
     <label>Amount</label>
-    <div >
       <input
       type="number"
       name="amount"
@@ -14,24 +13,20 @@
       step = "0.01"
       required
       />
-    </div>
   </div>
 
   <div>
     <label>Date</label>
-    <div >
       <input
       type="date"
       name="date_of_transaction"
       placeholder="25/11/2017"
       required
       />
-    </div>
   </div>
 
   <div >
     <label >Select a shop:</label>
-    <div >
       <select name="shop_id">
         <option value="" disabled selected>Select your option</option>
         <% @shops.each do |shop| %>
@@ -39,12 +34,10 @@
         <option value= <%= shop.id  %>><%= shop.name%></option>
         <% end %>
       </select>
-    </div>
   </div>
 
   <div >
     <label >Select a category:</label>
-    <div >
       <select name="category_id">
         <option value="" disabled selected>Select your option</option>
         <% @categories.each do |category| %>
@@ -52,20 +45,17 @@
         <option value= <%= category.id  %>><%= category.name%></option>
         <% end %>
       </select>
-    </div>
   </div>
 
 
 
   <div>
     <label>Comment:</label>
-    <div >
       <input
       type="text"
       name="comment"
       placeholder="Any useful comment"
       />
-    </div>
   </div>
 
   <button>Save transaction</button>

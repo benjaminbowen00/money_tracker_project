@@ -1,1 +1,39 @@
+label {
+  padding: 10px;
+}
 
+label,input,select {display: inline-block;}
+
+input[type=text] {
+    width: 30%;
+    padding: 6px 6px;
+    margin: 8px 0;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input[type=number] {
+    width: 18%;
+    padding: 6px 6px;
+    margin: 8px 0;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input[type=date] {
+    width: 18%;
+    padding: 6px 6px;
+    margin: 8px 0;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
+select {
+    width: 18%;
+    padding: 12px 20px;
+    font-size: 16px;
+    margin: 8px;
+    border: 1px black solid;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
