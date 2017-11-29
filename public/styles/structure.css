@@ -21,8 +21,10 @@
 
 .last-five-table {
   flex-grow: 1;
+}
 
-
+.inline {
+  display: inline-block;
 }
 
 ul {
@@ -44,19 +46,14 @@ main {
   margin:auto;
 }
 
-button {
+/*button {
   border-radius: 0;
-}
+}*/
 
-a {
-  text-decoration: none;
-}
+a { text-decoration: none;}
 
 body {
   font-family: helvetica;
   background-image:
       linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('../images/business_background.jpg');
-  background-size: 100%;
-
-
-}
+  background-size: 100%;}
