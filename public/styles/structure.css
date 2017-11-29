@@ -8,24 +8,53 @@
 }
 
 .home-page {
-  display:flex;
+
   justify-content: center;
   width:100%;
 }
 
 .budget-info {
-  width: 100%;
-  flex-grow: 1;
+  border: 1px black solid;
+  padding: 4px;
+  margin: auto;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
 
+
+
+}
+.center{
+  width: 70%;
+  margin:auto;
+  justify-content: center;
+  text-align: center;
 }
 
 .last-five-table {
-  flex-grow: 1;
+
 }
 
 .inline {
   display: inline-block;
 }
+
+.warning {
+  color: #ff5500;
+  font-size: 18px;
+}
+
+.danger {
+  display: inline-block;
+  color: red;
+  font-size: 18px;
+  border: 2px red solid;
+  padding: 4px;
+}
+
+
 
 ul {
   padding: 0px;

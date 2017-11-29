@@ -1,25 +1,39 @@
 
-<div>
-  <h2>Your budget information:</h2>
-  <p>Your budget was: <%= "£#{sprintf('%.2f', @wallet.budget)}" %></p>
-  <p>Your spend is: <%= "£#{sprintf('%.2f', @wallet.spend)}" %></p>
 
+<div class="budget-info smaller-table">
   <% remaining = @wallet.budget.to_f - @wallet.spend.to_f  %>
-  <p>Your remaining budget is: <%= "£#{sprintf('%.2f',remaining)}" %></p>
+  <h2>Your budget information:</h2>
+  <table>
+    <tr>
+      <th>Budget</th>
+      <th>Spend</th>
+      <th>Remaining Budget</th>
+    </tr>
+    <tr>
+      <td><%= "£#{sprintf('%.2f', @wallet.budget)}" %></td>
+      <td><%= "£#{sprintf('%.2f', @wallet.spend)}" %></td>
+      <td><%= "£#{sprintf('%.2f',remaining)}" %></td>
+    </tr>
+  </table>
+
+
 
   <% if remaining < 0 %>
-  <p> You have spent more than your whole budget!</p>
+  <p class="danger"> You have spent more than your whole budget!</p>
   <% elsif remaining < 100 %>
-  <p>Be careful with your spending</p>
+  <p class="warning">Be careful with your spending, you are getting close to having used your whole budget</p>
   <% end %>
 </div>
 
 
+<div class="center">
 
+  <h2>Make changes to your budget:</h2>
+  <div class="inline">
+    <a href="/wallets/edit"><button class='cat_shop_button'>Change the budget</button></a>
+  </div>
+  <div class="inline">
+    <a href="/wallets/add"><button class='cat_shop_button'>Add/subtract from the budget</button></a>
+  </div>
 
-
-
-<hr>
-<p><a href="/wallets/edit">Change the budget<a/></p>
-
-<p><a href="/wallets/add">Add/subtract from the budget<a/></p>
+</div>

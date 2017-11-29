@@ -9,6 +9,8 @@ require_relative('../models/wallet.rb')
 
 get '/categories' do
   @categories = Category.all()
+  @wallet = Wallet.find(1)
+  @wallet.update
   erb (:'category_views/categories')
 end
 

@@ -1,5 +1,6 @@
 
-<h3>Your transactions are:</h3>
+<h2>The total spend at <%= "#{@shop.name}" %> is <%= "£#{sprintf('%.2f', @shop.total_spend_by_shop)}" %></h2>
+<h3>The transactions are:</h3>
 
 <table>
   <tr>
@@ -13,7 +14,7 @@
 <% @transactions.each do |trans| %>
 <tr>
   <td><%= "#{trans.date_of_transaction}" %></td>
-  <td><%= "#{trans.amount}" %></td>
+  <td><%= "£#{sprintf('%.2f',trans.amount)}" %></td>
   <td><%= "#{trans.shop.name}" %></td>
   <td><%= "#{trans.category.name}" %></td>
   <td><%= "#{trans.comment}" %></td>

@@ -10,6 +10,8 @@ require_relative('../models/wallet.rb')
 
 get '/shops' do
   @shops = Shop.all()
+  @wallet = Wallet.find(1)
+  @wallet.update
   erb (:'shop_views/shops')
 end
 
