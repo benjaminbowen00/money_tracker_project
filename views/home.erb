@@ -1,35 +1,43 @@
-<h2>Your last five transactions are:</h2>
+<section class="home-page">
+<div class="last-five-table">
 
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Amount</th>
-    <th>Shop</th>
-    <th>Category</th>
-    <th>Comment</th>
-  </tr>
+  <h2>Your last five transactions are:</h2>
 
-<% @last_five.each do |trans| %>
-<tr>
-  <td><%= "#{trans.date_of_transaction}" %></td>
-  <td><%= "#{sprintf('%.2f',trans.amount)}" %></td>
-  <td><%= "#{trans.shop.name}" %></td>
-  <td><%= "#{trans.category.name}" %></td>
-  <td><%= "#{trans.comment}" %></td>
-</tr>
-<% end %>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Amount</th>
+      <th>Shop</th>
+      <th>Category</th>
+      <th>Comment</th>
+    </tr>
 
-</table>
+    <% @last_five.each do |trans| %>
+    <tr>
+      <td><%= "#{trans.date_of_transaction}" %></td>
+      <td><%= "£#{sprintf('%.2f',trans.amount)}" %></td>
+      <td><%= "#{trans.shop.name}" %></td>
+      <td><%= "#{trans.category.name}" %></td>
+      <td><%= "#{trans.comment}" %></td>
+    </tr>
+    <% end %>
 
-<h2>Your budget information:</h2>
-<p>Your budget was: <%= "£#{@wallet.budget}" %></p>
-<p>Your spend is: <%= "£#{@wallet.spend}" %></p>
+  </table>
 
-<% remaining = @wallet.budget.to_f - @wallet.spend.to_f  %>
-<p>Your remaining budget is: <%= "£#{sprintf('%.2f',remaining)}" %></p>
+</div>
 
-<% if remaining < 0 %>
-<p> You have spent more than your whole budget!</p>
-<% elsif remaining < 100 %>
-<p>Be careful with your spending</p>
-<% end %>
+<div class="budget-info">
+  <h2>Your budget information:</h2>
+  <p>Your budget was: <%= "£#{sprintf('%.2f', @wallet.budget)}" %></p>
+  <p>Your spend is: <%= "£#{sprintf('%.2f', @wallet.spend)}" %></p>
+
+  <% remaining = @wallet.budget.to_f - @wallet.spend.to_f  %>
+  <p>Your remaining budget is: <%= "£#{sprintf('%.2f',remaining)}" %></p>
+
+  <% if remaining < 0 %>
+  <p> You have spent more than your whole budget!</p>
+  <% elsif remaining < 100 %>
+  <p>Be careful with your spending</p>
+  <% end %>
+</div>
+</section>

@@ -15,7 +15,7 @@
   <% @categories.each do |category| %>
     <tr>
     <td><%= "#{category.name}" %> </td>
-    <td> <%= "#{category.total_spend_by_category}" %> </td>
+    <td> <%= "£#{sprintf('%.2f', category.total_spend_by_category)}" %> </td>
 
     <td>
       <% if category.total_spend_by_category==0 %>

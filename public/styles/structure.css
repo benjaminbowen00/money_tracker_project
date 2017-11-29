@@ -1,0 +1,53 @@
+
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.home-page {
+  display:flex;
+  justify-content: center;
+  width:100%;
+}
+
+.budget-info {
+  width: 100%;
+  flex-grow: 1;
+
+}
+
+.last-five-table {
+  flex-grow: 1;
+
+
+}
+
+ul {
+  padding: 0px;
+  margin: 0px;
+  list-style-type: none;
+}
+h1{
+  margin: auto;
+  text-align: center;
+}
+
+li {
+  padding: 10px;
+}
+
+main {
+  width:80%;
+  margin:auto;
+}
+
+button {
+  border-radius: 0;
+}
+
+a {
+  text-decoration: none;
+}

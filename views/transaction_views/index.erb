@@ -13,24 +13,27 @@
     <th>Shop</th>
     <th>Category</th>
     <th>Comment</th>
-    <th>Edit</th>
-    <th>Delete</th>
+    <th>Edit transaction</th>
+    <th>Delete transaction</th>
   </tr>
 
 <% @transactions.each do |trans| %>
 <tr>
   <td><%= "#{trans.date_of_transaction}" %></td>
-  <td><%= "#{trans.amount.to_f.round(2)}" %></td>
+  <td><%= "£#{sprintf('%.2f',trans.amount)}" %></td>
   <td><%= "#{trans.shop.name}" %></td>
   <td><%= "#{trans.category.name}" %></td>
   <td><%= "#{trans.comment}" %></td>
-  <td>  <form action="/transactions/<%= trans.id %>/edit"     method="get">
-  <input type="submit" value="Edit">
-  </form></td>
+
+  <td> <a class="table-button" href="/transactions/<%= trans.id %>/edit" >Edit</a> </td>
+
+
+
   <td>  <form method="post" action="/transactions/<%=trans.id%>">
     <input type="hidden" name="_method" value="delete">
-    <button>Delete transaction</button>
+    <button class="table-button">Delete</button>
   </form></td>
+
 </tr>
 <% end %>
 

@@ -14,7 +14,7 @@
   <% @shops.each do |shop| %>
     <tr>
     <td><%= "#{shop.name}" %></a> </td>
-    <td> <%= "#{shop.total_spend_by_shop}" %> </td>
+    <td> <%= "£#{sprintf('%.2f', shop.total_spend_by_shop)}" %> </td>
 
     <td>
         <% if shop.total_spend_by_shop==0 %>

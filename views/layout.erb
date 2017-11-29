@@ -2,20 +2,31 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/styles/buttons.css">
+    <link rel="stylesheet" type="text/css" href="/styles/forms.css">
+    <link rel="stylesheet" type="text/css" href="/styles/structure.css">
+    <link rel="stylesheet" type="text/css" href="/styles/tables.css">
+
     <title>iSpend-iTrack A money tracking app</title>
   </head>
   <body>
-    <h1>iSpend-iTrack</h1>
-    <nav>
-      <ul>
-        <li> <a href="/">Home</a> </li>
-        <li><a href="/transactions">Transactions</a></li>
-        <li><a href="/shops">Shops</a></li>
-        <li><a href="/categories">Categories</a></li>
-        <li><a href="/wallets">Budget</a></li>
+    <main>
+      <h1>iSpend-iTrack</h1>
+      <nav>
 
-      </ul>
-    </nav>
-    <%= yield %>
+        <ul class="flex">
+          <a href="/"><button class="button">Home</button></a>
+
+          <a href="/transactions"><button class="button">Transactions</button></a>
+
+          <a href="/shops"><button class="button">Shops</button></a>
+
+          <a href="/categories"><button class="button">Categories</button></a>
+
+          <a href="/wallets"><button class="button">Budget</button></a>
+          <a href="/transactions/new"><button class="button trans-button">Add Transaction</button></a>
+        </nav>
+        <%= yield %>
+      </main>
   </body>
 </html>
