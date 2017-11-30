@@ -1,5 +1,5 @@
 <h2>View your transactions by month</h2>
-<table>
+<table class="smaller-table">
   <tr>
     <th>Month</th>
     <th>Year</th>
@@ -9,7 +9,10 @@
   <tr>
     <td><%= Date::MONTHNAMES[month.month] %></td>
     <td><%= month.year %></td>
-    <td><a href="/months/<%= month.year %>/<%= month.month %>/transactions">link</a></td>
+    <td>  <form action="/months/<%= month.year %>/<%= month.month %>/transactions"     method="get">
+      <input class="table-button" type="submit" value="Transactions">
+    </form></td>
+
   </tr>
   <% end %>
 

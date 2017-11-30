@@ -26,7 +26,7 @@ class Category
   end
 
   def self.category_transactions(id)
-    sql = 'SELECT transactions.* FROM transactions INNER JOIN categories ON categories.id = transactions.category_id WHERE categories.id = $1'
+    sql = 'SELECT transactions.* FROM transactions INNER JOIN categories ON categories.id = transactions.category_id WHERE categories.id = $1 ORDER BY date_of_transaction DESC'
     values = [id]
     transactions = SqlRunner.run(sql, values)
     result = transactions.map {|transaction| Transaction.new(transaction)}

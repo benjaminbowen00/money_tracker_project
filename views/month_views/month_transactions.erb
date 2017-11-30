@@ -1,6 +1,13 @@
-
 <h3><%= @month_name %></h3>
-<p>This month you spent £<%= @monthly_spend %></p>
+
+<%if @monthly_spend.to_i == 0 %>
+<p>You did not record any transactions for this month.</p>
+
+
+<% else %>
+
+
+<p>This month you spent £<%= sprintf('%.2f', @monthly_spend) %></p>
 <h3>Your transactions are:</h3>
 
 <table>
@@ -15,7 +22,7 @@
 <% @transactions.each do |trans| %>
 <tr>
   <td><%= "#{trans.date_of_transaction}" %></td>
-  <td><%= "#{trans.amount}" %></td>
+  <td><%="£#{sprintf('%.2f',trans.amount)}" %></td>
   <td><%= "#{trans.shop.name}" %></td>
   <td><%= "#{trans.category.name}" %></td>
   <td><%= "#{trans.comment}" %></td>
@@ -23,3 +30,5 @@
 <% end %>
 
 </table>
+
+ <% end %>

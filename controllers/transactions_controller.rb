@@ -11,6 +11,8 @@ get '/transactions' do
   @transactions = Transaction.all
   @shops = Shop.all
   @categories = Category.all
+  @wallet = Wallet.find(1)
+  @wallet.update
   erb (:'transaction_views/index')
 end
 
