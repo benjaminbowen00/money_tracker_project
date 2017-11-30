@@ -22,7 +22,7 @@
   <% @transactions.each do |trans| %>
   <tr>
     <td><%= "#{trans.date_of_transaction}" %></td>
-    <td><%= "#{trans.amount}" %></td>
+    <td><%= "#{"£#{sprintf('%.2f',trans.amount)}"}" %></td>
     <td><%= "#{trans.shop.name}" %></td>
     <td><%= "#{trans.category.name}" %></td>
     <td><%= "#{trans.comment}" %></td>
