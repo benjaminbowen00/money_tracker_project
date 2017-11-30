@@ -53,6 +53,10 @@
   border: 2px red solid;
   padding: 4px;
 }
+.red-text {
+  color: red;
+  font-weight: bold;
+}
 
 
 

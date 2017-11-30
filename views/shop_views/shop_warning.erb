@@ -7,8 +7,8 @@
 
 <%else%>
 
-<h2>WARNING!</h2>
-<p>You have the following transactions from <%= "#{@shop.name}" %></p>
+<h2 class="red-text">WARNING!</h2>
+<p>You have the following transactions from <%= "#{@shop.name}" %>:</p>
 <hr>
 <table>
   <tr>
@@ -19,15 +19,15 @@
     <th>Comment</th>
   </tr>
 
-<% @transactions.each do |trans| %>
-<tr>
-  <td><%= "#{trans.date_of_transaction}" %></td>
-  <td><%= "#{trans.amount}" %></td>
-  <td><%= "#{trans.shop.name}" %></td>
-  <td><%= "#{trans.category.name}" %></td>
-  <td><%= "#{trans.comment}" %></td>
-</tr>
-<% end %>
+  <% @transactions.each do |trans| %>
+  <tr>
+    <td><%= "#{trans.date_of_transaction}" %></td>
+    <td><%= "#{trans.amount}" %></td>
+    <td><%= "#{trans.shop.name}" %></td>
+    <td><%= "#{trans.category.name}" %></td>
+    <td><%= "#{trans.comment}" %></td>
+  </tr>
+  <% end %>
 
 </table>
 <hr>
