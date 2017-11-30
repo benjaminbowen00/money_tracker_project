@@ -10,10 +10,15 @@
   <tr>
     <td><%= Date::MONTHNAMES[month.month] %></td>
     <td><%= month.year %></td>
-    <td><%= "£#{sprintf('%.2f', Transaction.total_by_month(month.year, month.month)
-)}" %></td>
-    <td>  <form action="/months/<%= month.year %>/<%= month.month %>/transactions"     method="get">
+    <td><%= "£#{sprintf('%.2f', Transaction.total_by_month(month.year, month.month))}" %></td>
+    <td>
+      <% if Transaction.total_by_month(month.year, month.month)==0 %>
+      <%= "N/A" %>
+      <% else %>
+
+      <form action="/months/<%= month.year %>/<%= month.month %>/transactions"     method="get">
       <input class="table-button" type="submit" value="Transactions">
+      <% end %>
     </form></td>
 
   </tr>
