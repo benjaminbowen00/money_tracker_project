@@ -16,7 +16,7 @@ end
 
 get '/categories/:id/transactions' do
     @category = Category.find(params[:id])
-    @transactions = Category.category_transactions(params[:id])
+    @transactions = Category.category_transactions_year_month(params[:id])
     erb (:'category_views/category_transactions')
 end
 
@@ -32,7 +32,7 @@ end
 
 get '/categories/:id/warning' do
   @category = Category.find(params[:id])
-  @transactions = Category.category_transactions(params[:id])
+  @transactions = Category.category_transactions_year_month(params[:id])
   erb (:'category_views/category_warning')
 end
 
@@ -48,4 +48,22 @@ end
 delete '/categories/:id' do
   Category.new(params).delete
   redirect to '/categories'
+end
+
+get '/categories/current' do
+  date = DateMonth.new
+  @month = date.month
+  @year = date.year
+  @categories = Category.all()
+  @monthly_spend = Transaction.total_by_month(@year, @month)
+  erb (:'category_views/categories_current')
+end
+
+get '/categories/current/:id/transactions' do
+  date = DateMonth.new
+  @month = date.month
+  @year = date.year
+  @category = Category.find(params[:id])
+  @transactions = Category.category_transactions_year_month(params[:id], @year, @month)
+  erb (:'category_views/categories_current_transactions')
 end

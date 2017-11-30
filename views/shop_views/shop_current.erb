@@ -1,7 +1,6 @@
 <h2 class='table-title'>Shops</h2>
-<br>
-<div class="inline">
-  <p>The total spend is <b><%= "£#{sprintf('%.2f', @wallet.spend)}" %></b></p>
+<div >
+  <p>The total spend for <%= Date::MONTHNAMES[@month] %> <%= @year %> is <b><%= "£#{sprintf('%.2f', @monthly_spend)}" %></b></p>
 </div>
 <div class="inline">
   <a href=/shops/new><button class='cat_shop_button'>Add a new shop</button></a>
@@ -20,13 +19,13 @@
     <% @shops.each do |shop| %>
     <tr>
       <td><%= "#{shop.name}" %></a> </td>
-      <td> <%= "£#{sprintf('%.2f', shop.total_spend_by_shop_year_month())}" %> </td>
+      <td> <%= "£#{sprintf('%.2f', shop.total_spend_by_shop_year_month(@year, @month))}" %> </td>
 
       <td>
-        <% if shop.total_spend_by_shop_year_month()==0 %>
+        <% if shop.total_spend_by_shop_year_month(@year, @month)==0 %>
         <%= "N/A" %>
         <% else %>
-        <form action="/shops/<%= shop.id %>/transactions"     method="get">
+        <form action="/shops/current/<%= shop.id %>/transactions"     method="get">
           <input class="table-button" type="submit" value="Transactions"></form>
           <% end %>
         </td>

@@ -10,6 +10,10 @@ require_relative('../models/wallet.rb')
 get '/wallets' do
   @wallet = Wallet.find(1)
   @wallet.update
+  date = DateMonth.new
+  @month = date.month
+  @year = date.year
+  @monthly_spend = Transaction.total_by_month(@year, @month)
   erb (:'wallet_views/wallets')
 end
 

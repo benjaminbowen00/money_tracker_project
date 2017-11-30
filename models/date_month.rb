@@ -21,5 +21,12 @@ class DateMonth
     "#{Date::MONTHNAMES[options['month_id'].to_i]} #{options['year_id']}"
   end
 
+  def month
+    return @today.month
+  end
+
+  def year
+    return @today.year
+  end
 
 end

@@ -1,0 +1,45 @@
+<h2 class='table-title'>Categories</h2>
+<div >
+  <p>The total spend for <%= Date::MONTHNAMES[@month] %> <%= @year %> is <b><%= "£#{sprintf('%.2f', @monthly_spend)}" %></b></p>
+</div>
+<div class="inline">
+  <a href=/categories/new><button class='cat_shop_button'>Add a new category</button></a>
+</div>
+
+<div >
+  <table>
+    <tr>
+      <th>Category</th>
+      <th>Total spend</th>
+      <th>View transactions</th>
+      <th>Edit category</th>
+      <th>Remove category</th>
+    </tr>
+
+    <% @categories.each do |category| %>
+    <tr>
+      <td><%= "#{category.name}" %></a> </td>
+      <td> <%= "£#{sprintf('%.2f', category.total_spend_by_category_year_month(@year, @month))}" %> </td>
+
+      <td>
+        <% if category.total_spend_by_category_year_month(@year, @month)==0 %>
+        <%= "N/A" %>
+        <% else %>
+        <form action="/categories/current/<%= category.id %>/transactions"     method="get">
+          <input class="table-button" type="submit" value="Transactions"></form>
+          <% end %>
+        </td>
+
+        <td>  <form action="/categories/<%= category.id %>/edit"     method="get">
+          <input class="table-button" type="submit" value="Edit">
+        </form></td>
+        <td>  <form action="/categories/<%= category.id %>/warning"     method="get">
+          <input class="table-button" type="submit" value="Remove">
+        </form>
+      </td>
+
+    </tr>
+    <% end %>
+
+  </table>
+</div>

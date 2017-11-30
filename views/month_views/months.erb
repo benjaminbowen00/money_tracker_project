@@ -3,12 +3,15 @@
   <tr>
     <th>Month</th>
     <th>Year</th>
+    <th>Spend</th>
     <th>View transactions</th>
   </tr>
   <% @months_array.each do |month| %>
   <tr>
     <td><%= Date::MONTHNAMES[month.month] %></td>
     <td><%= month.year %></td>
+    <td><%= "£#{sprintf('%.2f', Transaction.total_by_month(month.year, month.month)
+)}" %></td>
     <td>  <form action="/months/<%= month.year %>/<%= month.month %>/transactions"     method="get">
       <input class="table-button" type="submit" value="Transactions">
     </form></td>

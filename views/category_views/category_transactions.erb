@@ -1,5 +1,5 @@
 
-<h2>The total spend at <%= "#{@category.name}" %> is <%= "£#{sprintf('%.2f', @category.total_spend_by_category)}" %></h2>
+<h2>The total spend on <%= "#{@category.name}" %> is <%= "£#{sprintf('%.2f', @category.total_spend_by_category_year_month())}" %></h2>
 <h3>The transactions are:</h3>
 <table>
   <tr>

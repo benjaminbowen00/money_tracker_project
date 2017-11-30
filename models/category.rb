@@ -25,12 +25,12 @@ class Category
     result = categories.map {|cat| Category.new(cat)}
   end
 
-  def self.category_transactions(id)
-    sql = 'SELECT transactions.* FROM transactions INNER JOIN categories ON categories.id = transactions.category_id WHERE categories.id = $1 ORDER BY date_of_transaction DESC'
-    values = [id]
-    transactions = SqlRunner.run(sql, values)
-    result = transactions.map {|transaction| Transaction.new(transaction)}
-  end
+  # def self.category_transactions(id)
+  #   sql = 'SELECT transactions.* FROM transactions INNER JOIN categories ON categories.id = transactions.category_id WHERE categories.id = $1 ORDER BY date_of_transaction DESC'
+  #   values = [id]
+  #   transactions = SqlRunner.run(sql, values)
+  #   result = transactions.map {|transaction| Transaction.new(transaction)}
+  # end
 
   def self.find(id)
     sql = "SELECT * FROM categories where id = $1"
@@ -39,18 +39,43 @@ class Category
     return Category.new(category)
   end
 
-  def total_spend_by_category
-    sql = 'SELECT SUM(amount) FROM transactions WHERE category_id = $1'
-    values = [@id]
-    total = SqlRunner.run(sql, values).first['sum']
-    return total if total
-    return 0
-  end
+  # def total_spend_by_category
+  #   sql = 'SELECT SUM(amount) FROM transactions WHERE category_id = $1'
+  #   values = [@id]
+  #   total = SqlRunner.run(sql, values).first['sum']
+  #   return total if total
+  #   return 0
+  # end
 
   def delete
     sql = "DELETE FROM categories WHERE id = $1"
     values = [@id]
     SqlRunner.run(sql, values)
+  end
+
+
+
+  def total_spend_by_category_year_month(year_id=nil, month_id=nil)
+    sql = 'SELECT SUM(amount) FROM transactions WHERE category_id = $1'
+    values = [@id]
+    if year_id && month_id
+      sql += ' AND EXTRACT(YEAR FROM date_of_transaction)=$2 AND EXTRACT(MONTH FROM date_of_transaction)=$3'
+      values += [year_id, month_id]
+    end
+    total = SqlRunner.run(sql, values).first['sum']
+    return total if total
+    return 0
+  end
+
+  def self.category_transactions_year_month(id, year_id=nil, month_id=nil)
+    sql = 'SELECT transactions.* FROM transactions INNER JOIN categories ON categories.id = transactions.category_id WHERE categories.id = $1'
+    values = [id]
+    if year_id && month_id
+      sql += ' AND EXTRACT(YEAR FROM date_of_transaction)=$2 AND EXTRACT(MONTH FROM date_of_transaction)=$3 ORDER BY date_of_transaction DESC'
+      values += [year_id, month_id]
+    end
+    transactions = SqlRunner.run(sql, values)
+    result = transactions.map {|transaction| Transaction.new(transaction)}
   end
 
 end

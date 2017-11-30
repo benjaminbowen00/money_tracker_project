@@ -73,8 +73,18 @@ class Transaction
   end
 
   def self.total_by_month(year_id,month_id)
-  sql="SELECT SUM(amount) FROM transactions WHERE EXTRACT(YEAR FROM date_of_transaction)=$1 AND EXTRACT(MONTH FROM date_of_transaction)=$2"
-  values = [year_id, month_id]
-  SqlRunner.run(sql, values).first['sum']
+    sql="SELECT SUM(amount) FROM transactions WHERE EXTRACT(YEAR FROM date_of_transaction)=$1 AND EXTRACT(MONTH FROM date_of_transaction)=$2"
+    values = [year_id, month_id]
+    total = SqlRunner.run(sql, values).first['sum']
+    return total if total
+    else return 0
   end
+
+  def self.last_five_transactions_by_month_number(year_id, month_id)
+    sql="SELECT * FROM transactions WHERE EXTRACT(YEAR FROM date_of_transaction)=$1 AND EXTRACT(MONTH FROM date_of_transaction)=$2 ORDER BY date_of_transaction DESC LIMIT 5"
+    values = [year_id, month_id]
+    transactions = SqlRunner.run(sql, values)
+    result = transactions.map {|transaction| Transaction.new(transaction)}
+  end
+
 end

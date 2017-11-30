@@ -20,11 +20,15 @@ require_relative('./controllers/month_controller.rb')
 
 
 get '/' do
-  @last_five = Transaction.last_five
   @shops = Shop.all
   @categories = Category.all
   @wallet = Wallet.find(1)
   @wallet.update
+  date = DateMonth.new
+  @month = date.month
+  @year = date.year
+  @monthly_spend = Transaction.total_by_month(@year, @month)
+  @last_five = Transaction.last_five_transactions_by_month_number(@year, @month)
   erb ( :home )
 end
 

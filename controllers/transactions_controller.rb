@@ -6,6 +6,7 @@ require_relative('../models/category.rb')
 require_relative('../models/shop.rb')
 require_relative('../models/transaction.rb')
 require_relative('../models/wallet.rb')
+require_relative('../models/date_month.rb')
 
 get '/transactions' do
   @transactions = Transaction.all
@@ -43,4 +44,14 @@ end
 delete '/transactions/:id' do
   Transaction.find(params[:id]).delete
   redirect to '/'
+end
+
+get '/transactions/current' do
+  date = DateMonth.new
+  @month = date.month
+  @year = date.year
+  @transactions = Transaction.transactions_by_month_number(@year, @month)
+  @monthly_spend = Transaction.total_by_month(@year, @month)
+  erb (:'transaction_views/current')
+
 end

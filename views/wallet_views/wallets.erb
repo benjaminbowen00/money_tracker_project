@@ -1,7 +1,7 @@
 
 
 <div class="budget-info smaller-table">
-  <% remaining = @wallet.budget.to_f - @wallet.spend.to_f  %>
+  <% remaining = @wallet.budget.to_f - @monthly_spend.to_f  %>
   <h2>Your budget information:</h2>
   <table>
     <tr>
@@ -11,7 +11,7 @@
     </tr>
     <tr>
       <td><%= "£#{sprintf('%.2f', @wallet.budget)}" %></td>
-      <td><%= "£#{sprintf('%.2f', @wallet.spend)}" %></td>
+      <td><%= "£#{sprintf('%.2f', @monthly_spend)}" %></td>
       <td><%= "£#{sprintf('%.2f',remaining)}" %></td>
     </tr>
   </table>

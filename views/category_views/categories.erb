@@ -1,4 +1,8 @@
 <h2 class='table-title'>Categories</h2>
+<br>
+<div class="inline">
+  <p>The total spend is <b><%= "£#{sprintf('%.2f', @wallet.spend)}" %></b></p>
+</div>
 
 <div class="inline">
   <a href='/categories/new'><button class="cat_shop_button">Add a new category</button></a>
@@ -18,10 +22,10 @@
     <% @categories.each do |category| %>
     <tr>
       <td><%= "#{category.name}" %> </td>
-      <td> <%= "£#{sprintf('%.2f', category.total_spend_by_category)}" %> </td>
+      <td> <%= "£#{sprintf('%.2f', category.total_spend_by_category_year_month())}" %> </td>
 
       <td>
-        <% if category.total_spend_by_category==0 %>
+        <% if category.total_spend_by_category_year_month==0 %>
         <%= "N/A" %>
         <% else %>
         <form action="/categories/<%= category.id %>/transactions"     method="get">
@@ -44,9 +48,4 @@
     </tr>
     <% end %>
   </table>
-</div>
-
-<div >
-  <br>
-  <p>The total spend is <b><%= "£#{sprintf('%.2f', @wallet.spend)}" %></b></p>
 </div>

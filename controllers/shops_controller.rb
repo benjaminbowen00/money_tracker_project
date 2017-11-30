@@ -17,7 +17,7 @@ end
 
 get '/shops/:id/transactions' do
   @shop = Shop.find(params[:id])
-  @transactions = Shop.shop_transactions(params[:id])
+  @transactions = Shop.shop_transactions_year_month(params[:id])
   erb (:'shop_views/shop_transactions')
 end
 
@@ -38,7 +38,7 @@ end
 
 get '/shops/:id/warning' do
   @shop = Shop.find(params[:id])
-  @transactions = Shop.shop_transactions(params[:id])
+  @transactions = Shop.shop_transactions_year_month(params[:id])
   erb (:'shop_views/shop_warning')
 end
 
@@ -49,4 +49,23 @@ end
 post '/shops' do
   shop = Shop.new(params).save
   redirect to '/shops'
+end
+
+
+get '/shops/current' do
+  date = DateMonth.new
+  @month = date.month
+  @year = date.year
+  @shops = Shop.all()
+  @monthly_spend = Transaction.total_by_month(@year, @month)
+  erb (:'shop_views/shop_current')
+end
+
+get '/shops/current/:id/transactions' do
+  date = DateMonth.new
+  @month = date.month
+  @year = date.year
+  @shop = Shop.find(params[:id])
+  @transactions = Shop.shop_transactions_year_month(params[:id], @year, @month)
+  erb (:'shop_views/shop_current_transactions')
 end

@@ -1,14 +1,14 @@
-<h2>Transactions</h2>
+<h2>Transactions for <%= Date::MONTHNAMES[@month] %> <%= @year %></h2>
 <div >
-  <p>The total spend is <b><%= "£#{sprintf('%.2f', @wallet.spend)}" %></b></p>
-</div>
-<div class="inline">
-  <a href="/shops"><button class='cat_shop_button'>Show by shop</button></a>
-</div>
-<div class="inline">
-  <a href="/categories"><button class='cat_shop_button'>Show by category</button></a>
+  <p>The total spend for <%= Date::MONTHNAMES[@month] %> <%= @year %> is <b><%= "£#{sprintf('%.2f', @monthly_spend)}" %></b></p>
 </div>
 
+<div class="inline">
+  <a href="/shops/current"><button class='cat_shop_button'>Show by shop</button></a>
+</div>
+<div class="inline">
+  <a href="/categories/current"><button class='cat_shop_button'>Show by category</button></a>
+</div>
 
 
 <table>

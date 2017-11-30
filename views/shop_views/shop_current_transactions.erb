@@ -1,5 +1,5 @@
 
-<h2>The total spend at <%= "#{@shop.name}" %> is <%= "£#{sprintf('%.2f', @shop.total_spend_by_shop_year_month)}" %></h2>
+<h3>The total spend at <%= "#{@shop.name}" %> for <%= Date::MONTHNAMES[@month] %> <%= @year %> is <%= "£#{sprintf('%.2f', @shop.total_spend_by_shop_year_month(@year, @month))}" %></h3>
 <h3>The transactions are:</h3>
 
 <table>
